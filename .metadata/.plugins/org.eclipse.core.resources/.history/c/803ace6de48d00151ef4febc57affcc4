@@ -1,0 +1,9 @@
+package com.sds.board.model;
+
+	public interface BoardDAO{
+		public int insert(Board board);
+		public List selectAll();
+		public 
+	}
+
+}

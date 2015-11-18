@@ -1,0 +1,5 @@
+package com.sds.board.model;
+
+public class Board {
+
+}

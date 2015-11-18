@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!--이 xml은 DispatcherServlet이 관리하는 ApplicationContext 객체이므로, 리스너 객체가 관리하는
+	ApplicationContext의 하위 자식 객체가 관리하는 xml이다.
+	따라서 하위자식 객체의 xml은 상위객체의 xml을 접근할 수 있다.  -->
+	
+	<bean id="testController" class="test.TestController"
+	p:highStudent-ref="highStudent"/>
+	
+	<context:component-scan base-package="board">
+		<context:include-filter type="annotation" 
+		expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	<context:annotation-config/>
+</beans>
