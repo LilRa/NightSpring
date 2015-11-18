@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- Spring DispatcherServlet의 디폴트 뷰 리졸버 (Default View Resolver)는 InternalResourceViewResolver이다.
+다시 말해, XML 설정 안에 뷰 리졸버를 설정하지 않으면 InternalResourceViewResolver이 뷰 리졸버가 된다. -->
+<bean id="viewResolver"
+class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+p:prefix="/"
+p:suffix=".jsp"/>
+
+<!--JNDI방식  -->
+
+<!-- jndi를 이용해서 DB Connection을 가져온다는것은 DataSource를 Spring 내부에서 설정해서 쓰는 것이 아니라 
+WAS에서 만들어져 있는 DataSource를 jndi를 이용해서 접근하여 해당 Connection을 가져온다는 겁니다.. -->
+
+<jee:jndi-lookup jndi-name="jdbc/mariadb"/>
+
+
+</beans>

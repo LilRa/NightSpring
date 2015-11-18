@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+<!-- 1. web.xml에서 org.springframework.web.servlet.DispatcherServlet 을 실행시키고
+	 2. dispatcher-servlet.xml 설정을 참조해서 Controller와 viewResolver, View를 동작하게 한다 -->
+<filter>
+	<filter-name>encodingFilter</filter-name>
+	<!-- The fully qualified classname of the filter. -->
+	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+</filter>	 
+	 
+<servlet>
+<!--Content Model : (((description*, display-name*, icon*)), servlet-name, (servlet-class | jsp-file)?, init-param*, 
+ load-on-startup?, enabled?, async-supported?, run-as?, security-role-ref*, multipart-config?)  -->
+	<servlet-name>dispatcher</servlet-name>
+	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	<init-param>
+		<!--The param-name element contains the name of a parameter.  -->
+		<param-name>conntextConfigLocatio</param-name>
+		<!--The param-value element contains the value of a parameter.  -->
+		<param-value>/WEB-INF/servlet-context.xml</param-value>
+	</init-param>
+</servlet>
+<servlet-mapping>
+	<!-- Content Model : (servlet-name, url-pattern+) -->
+	<servlet-name>dispatcher</servlet-name>
+	<url-pattern>*.do</url-pattern>
+</servlet-mapping>
+</web-app>
